@@ -1,6 +1,6 @@
 {
   "Book1": {
     "name": "Fun Book",
-    "location": "../Books/Book1/TOC.json"
+    "location": "https://raw.githubusercontent.com/dineshgudibandi/book-shelf/main/Books/Book1/TOC.json"
   }
 }
