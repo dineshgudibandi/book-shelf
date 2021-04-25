@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,8 +9,23 @@ import {
 } from "react-router-dom";
 import { Card,Button } from 'react-bootstrap';
 import Book from './Book';
+import bookShelfAPI from './constants';
 const Books = () => {
   let match = useRouteMatch();
+  const [books,setBooks] = useState([]);
+useEffect(() => {
+
+fetch(bookShelfAPI)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setBooks(result);
+        },
+        (error) => {
+
+        }
+      )
+  },[]);
 
   return (
     <div>
