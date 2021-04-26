@@ -28,7 +28,7 @@ const bookShelf = books.map((book) =>
             <Card.Text>
              {book.description}
             </Card.Text>
-            <Button variant="primary"><Link to={{ pathname:`${match.url}/${book.slug}`, state:{book}}}>
+            <Button><Link to={{ pathname:`/book/${book.slug}`, state:{book}}}>
                                                 Read
                                                 </Link></Button>
           </Card.Body>

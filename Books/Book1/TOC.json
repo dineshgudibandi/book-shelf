@@ -3,5 +3,10 @@
     "slug": "getting-started",
     "name": "Getting Started",
     "location": "https://raw.githubusercontent.com/dineshgudibandi/book-shelf/main/Books/Book1/getting-started.json"
+  },
+  {
+    "slug": "installation",
+    "name": "Installation",
+    "location": "https://raw.githubusercontent.com/dineshgudibandi/book-shelf/main/Books/Book1/installation.json"
   }
 ]

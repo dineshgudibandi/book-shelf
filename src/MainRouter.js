@@ -11,8 +11,10 @@ return  (<Switch>
                  <Route path="/about">
                    <About />
                  </Route>
-
-                <Route path={`/books/:bookId`}>
+                  <Route path={`/book/:bookId/:chapterId`}>
+                 <Book />
+                  </Route>
+                <Route path={`/book/:bookId`}>
                  <Book />
                   </Route>
                  <Route path="/books">
