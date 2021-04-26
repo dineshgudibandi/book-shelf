@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
-  useRouteMatch,
-  useParams
+  useRouteMatch
 } from "react-router-dom";
 import { Card,Button } from 'react-bootstrap';
 import { bookShelfAPI } from './constants';
@@ -26,13 +22,13 @@ fetch(bookShelfAPI)
       )
   },[]);
 const bookShelf = books.map((book) =>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' }} key={book.slug} >
           <Card.Body>
             <Card.Title>{book.name}</Card.Title>
             <Card.Text>
              {book.description}
             </Card.Text>
-            <Button variant="primary"><Link to={`${match.url}/${book.slug}`}>
+            <Button variant="primary"><Link to={{ pathname:`${match.url}/${book.slug}`, state:{book}}}>
                                                 Read
                                                 </Link></Button>
           </Card.Body>

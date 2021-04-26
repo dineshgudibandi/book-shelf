@@ -3,6 +3,6 @@
     "slug": "fun-book",
     "name": "Fun Book",
     "description": "This is a fun book to read",
-    "location": "https://raw.githubusercontent.com/dineshgudibandi/book-shelf/main/src/book-shelf.json"
+    "location": "https://raw.githubusercontent.com/dineshgudibandi/book-shelf/main/Books/Book1/TOC.json"
   }
 ]

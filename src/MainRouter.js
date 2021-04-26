@@ -1,13 +1,8 @@
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
+  Route
 } from "react-router-dom";
 import About from './About';
-import Home from './Home';
 import Books from './Books';
 import Book from './Book';
 
@@ -16,6 +11,7 @@ return  (<Switch>
                  <Route path="/about">
                    <About />
                  </Route>
+
                 <Route path={`/books/:bookId`}>
                  <Book />
                   </Route>

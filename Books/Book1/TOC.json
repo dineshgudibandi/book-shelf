@@ -1,3 +1,7 @@
-{
-  "getting-started": "Getting Started"
-}
+[
+  {
+    "slug": "getting-started",
+    "name": "Getting Started",
+    "location": "https://raw.githubusercontent.com/dineshgudibandi/book-shelf/main/Books/Book1/getting-started.json"
+  }
+]
