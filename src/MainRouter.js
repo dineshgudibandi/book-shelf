@@ -9,17 +9,22 @@ import {
 import About from './About';
 import Home from './Home';
 import Books from './Books';
+import Book from './Book';
+
 const MainRouter = ()=>{
 return  (<Switch>
                  <Route path="/about">
                    <About />
                  </Route>
+                <Route path={`/books/:bookId`}>
+                 <Book />
+                  </Route>
                  <Route path="/books">
                    <Books />
                  </Route>
-                 <Route path="/">
+                  <Route path="/">
                    <Books />
-                 </Route>
+                  </Route>
                </Switch>);
                }
 export default MainRouter;
