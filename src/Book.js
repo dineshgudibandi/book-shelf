@@ -23,16 +23,17 @@ const Book = () => {
    const [mybook,setMybook] = useState([]);
    const [edit,setEdit] = useState(false);
    const [ content,setContent]= useState(EditorState.createEmpty());
-   const [git,setGit]=useState('');
+   const [git,setGit]=useState(book.pr);
+   const [gitLocation, setGitLocation] = useState(book.location);
  useEffect(() => {
   if(book){
-     fetch(book.location)
+     fetch(book.location+book.entry)
        .then(res => res.json())
        .then(
          (result) => {
            setMybook(result);
-               setGit(result[0].location);
-               fetch(result[0].location)
+               setGit(git+result[0].location);
+               fetch(gitLocation+result[0].location)
                             .then(res => res.json())
                             .then(
                               (result) => {
@@ -52,8 +53,8 @@ const Book = () => {
    },[]);
     useEffect(() => {
              if(chapter){
-             setGit(chapter.location);
-             fetch(chapter.location)
+             setGit(git+chapter.location);
+             fetch(gitLocation+chapter.location)
                  .then(res => res.json())
                  .then(
                    (result) => {
@@ -93,7 +94,7 @@ const markup = draftToHtml(
  let newObject = { "authors": currentChapter.authors,
                    "content": markup };
 textToClipboard(JSON.stringify(newObject, null, " "));
-window.location.href = git.replace('raw','edit');
+window.location.href = git;
 }
 const textToClipboard = (text) => {
     var dummy = document.createElement("textarea");
