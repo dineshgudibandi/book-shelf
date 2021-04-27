@@ -5,21 +5,24 @@ import {
 import About from './About';
 import Books from './Books';
 import Book from './Book';
-
+import { baseUrl } from './constants';
 const MainRouter = ()=>{
 return  (<Switch>
-                 <Route path="/about">
+                 <Route path={`${baseUrl}/about`}>
                    <About />
                  </Route>
-                  <Route path={`/book/:bookId/:chapterId`}>
+                  <Route path={`${baseUrl}/book/:bookId/:chapterId`}>
                  <Book />
                   </Route>
-                <Route path={`/book/:bookId`}>
+                <Route path={`${baseUrl}/book/:bookId`}>
                  <Book />
                   </Route>
-                 <Route path="/books">
+                 <Route path={`${baseUrl}/books`}>
                    <Books />
                  </Route>
+                 <Route path={baseUrl}>
+                  <Books />
+                    </Route>
                   <Route path="/">
                    <Books />
                   </Route>

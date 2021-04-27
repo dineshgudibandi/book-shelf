@@ -12,7 +12,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import { convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
+import {baseUrl} from './constants';
 const Book = () => {
   const params = useParams();
   const location = useLocation()
@@ -24,6 +24,7 @@ const Book = () => {
    const [edit,setEdit] = useState(false);
    const [ content,setContent]= useState(EditorState.createEmpty());
    const [git,setGit]=useState(book.pr);
+   const [currentFile, setCurrentFile] = useState('');
    const [gitLocation, setGitLocation] = useState(book.location);
  useEffect(() => {
   if(book){
@@ -32,7 +33,7 @@ const Book = () => {
        .then(
          (result) => {
            setMybook(result);
-               setGit(git+result[0].location);
+               setCurrentFile(result[0].location);
                fetch(gitLocation+result[0].location)
                             .then(res => res.json())
                             .then(
@@ -53,7 +54,7 @@ const Book = () => {
    },[]);
     useEffect(() => {
              if(chapter){
-             setGit(git+chapter.location);
+             setCurrentFile(chapter.location);
              fetch(gitLocation+chapter.location)
                  .then(res => res.json())
                  .then(
@@ -69,7 +70,7 @@ const Book = () => {
       },[chapter]);
    const bookTOC = mybook.map((chapter) =>
 <Nav defaultActiveKey="#" className="flex-column" key={chapter.slug} >
-  <Link to={{ pathname:`/book/${book.slug}/${chapter.slug}`, state:{chapter,book}}}>
+  <Link to={{ pathname:`${baseUrl}/book/${book.slug}/${chapter.slug}`, state:{chapter,book}}}>
                                                                          {chapter.name}
                                                                          </Link>
 </Nav>);
@@ -94,7 +95,7 @@ const markup = draftToHtml(
  let newObject = { "authors": currentChapter.authors,
                    "content": markup };
 textToClipboard(JSON.stringify(newObject, null, " "));
-window.location.href = git;
+window.location.href = git+currentFile;
 }
 const textToClipboard = (text) => {
     var dummy = document.createElement("textarea");
